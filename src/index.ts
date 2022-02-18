@@ -1,40 +1,57 @@
 import { ethers } from 'ethers';
 
-function getEth() {
-	// @ts-ignore
-	const eth = window.ethereum;
-	if (!eth) {
-		throw new Error('Get metamask');
-	}
+async function hasSigners(): Promise<boolean> {
+	//@ts-ignore
+	const metamask = window.ethereum;
 
-	return eth;
+	// Check if there are available accounts
+	const signers = await (metamask.request({
+		method: 'eth_accounts',
+	}) as Promise<string[]>);
+	return signers.length > 0;
 }
 
-async function hasAccounts() {
-	const eth = getEth();
-	const accounts = (await eth.request({ method: 'eth_accounts' })) as string[];
-
-	return accounts && accounts.length;
-}
-
-async function requestAccounts() {
-	const eth = getEth();
-	const accounts = (await eth.request({
+async function requestAccess(): Promise<boolean> {
+	//@ts-ignore
+	const result = (await window.ethereum.request({
 		method: 'eth_requestAccounts',
 	})) as string[];
-
-	return accounts && accounts.length;
+	// Check if there are available request Accounts
+	return result && result.length > 0;
 }
 
-async function run() {
-	if (!(await hasAccounts()) && !(await requestAccounts())) {
-		throw new Error('Please let me take your money');
+async function getContract() {
+	const address = process.env.CONTRACT_ADDRESS;
+
+	if (!(await hasSigners()) && !(await requestAccess())) {
+		console.log('You are in trouble, no one wants to play');
 	}
-	const hello = new ethers.Contract(
-		'',
-		[],
-		new ethers.providers.Web3Provider(getEth())
-	);
+
+	// @ts-ignore
+	const provider = new ethers.providers.Web3Provider(window.ethereum);
+	const contract = new ethers.Contract(address, [
+		'function count() public',
+		'function getCounter() public view returns (uint32)',
+	]);
+
+	const el = document.createElement('div');
+	async function setCounter() {
+		el.innerHTML = await contract.getCounter();
+	}
+	setCounter();
+
+	const button = document.createElement('button');
+	button.innerText = 'increment';
+
+	button.onclick = async function () {
+		await contract.count();
+		setCounter();
+	};
+
+	document.body.appendChild(el);
+	document.body.appendChild(button);
+	console.log('We have done it, time to call');
+	// console.log(await contract.hello());
 }
 
-run();
+getContract();
