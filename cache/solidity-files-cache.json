@@ -37,8 +37,8 @@
       ]
     },
     "/Users/user/Desktop/Blockchain/jpegdegens/contracts/Counter.sol": {
-      "lastModificationDate": 1645706667627,
-      "contentHash": "a0a57cdac1b8ebd79a4eb651fa8cf56e",
+      "lastModificationDate": 1646309131700,
+      "contentHash": "fe6ccae15862915d1e254cc28146cb51",
       "sourceName": "contracts/Counter.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -109,8 +109,8 @@
       ]
     },
     "/Users/user/Desktop/Blockchain/jpegdegens/contracts/Hero.sol": {
-      "lastModificationDate": 1645787208352,
-      "contentHash": "192637e07cc9b3799802770c7182b553",
+      "lastModificationDate": 1646145069204,
+      "contentHash": "077f2ee903be2e3b89fd556219046449",
       "sourceName": "contracts/Hero.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -141,6 +141,119 @@
       ],
       "artifacts": [
         "Hero"
+      ]
+    },
+    "/Users/user/Desktop/Blockchain/jpegdegens/contracts/TestHero.sol": {
+      "lastModificationDate": 1646143717760,
+      "contentHash": "26e90fb0e030ff75be9e73cbe432ba6a",
+      "sourceName": "contracts/TestHero.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Hero.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "TestHero"
+      ]
+    },
+    "/Users/user/Desktop/Blockchain/jpegdegens/contracts/Fallback.sol": {
+      "lastModificationDate": 1646308769999,
+      "contentHash": "b6eea5a5c2cbfd761eebf110ad63c777",
+      "sourceName": "contracts/Fallback.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Fallback",
+        "IFallback"
+      ]
+    },
+    "/Users/user/Desktop/Blockchain/jpegdegens/contracts/A.sol": {
+      "lastModificationDate": 1646309622531,
+      "contentHash": "77336ef82ac6ca7d91624bfd22f21a7d",
+      "sourceName": "contracts/A.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "hardhat/console.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "A",
+        "B"
       ]
     }
   }
